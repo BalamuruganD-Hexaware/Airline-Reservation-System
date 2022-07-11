@@ -1,0 +1,56 @@
+.parent {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  font-size: 14px;
+}
+
+form.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin-bottom: -1.25em;
+}
+
+mat-label {
+  color: whitesmoke;
+}
+
+form.container > * {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-col {
+  display: flex;
+  justify-content: center;
+}
+
+.col-6 {
+  padding-left: 0;
+}
+.mat-card {
+  border-radius: 5%;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 6px 6px 10px 10px rgba(0, 0, 0, 0.151);
+}
+
+.mat-snack-bar-container {
+  background-color: #fff;
+  color: red;
+}
+
+.mat-snack-bar-container > button {
+  color: red;
+}

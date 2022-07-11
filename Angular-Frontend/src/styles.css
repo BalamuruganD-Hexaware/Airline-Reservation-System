@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+body {
+  height: 100vh;
+  background: #0f0f0f;
+  /* background-image: radial-gradient(circle, #4d7bca, #2b4b80); */
+}
+
+html,
+body {
+  height: auto;
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: "Fira Code", "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

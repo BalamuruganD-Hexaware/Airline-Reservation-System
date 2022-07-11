@@ -1,0 +1,141 @@
+<div class="container parent">
+  <div class="row"></div>
+  <div class="row text-danger help-block">
+    <p *ngIf="registerForm.errors?.confirmedValidator">Password should match</p>
+    <p
+      *ngIf="
+        registerForm.get('phoneNumber').invalid &&
+        registerForm.get('phoneNumber').touched
+      "
+    >
+      Phone number should have 10 digits
+    </p>
+    <p
+      *ngIf="
+        registerForm.get('firstName').invalid &&
+        registerForm.get('firstName').touched
+      "
+    >
+      First name should atleast have 4 characters
+    </p>
+    <p
+      *ngIf="
+        registerForm.get('lastName').invalid &&
+        registerForm.get('lastName').touched
+      "
+    >
+      Last name should atleast have 4 characters
+    </p>
+    <p *ngIf="registerForm.errors?.required">All fields are required</p>
+  </div>
+  <mat-card style="height: 85vh">
+    <h3 class="mat-display-1" style="margin: 0">Register</h3>
+    <form
+      class="container"
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+    >
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+            <mat-label>First name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="firstName"
+              formControlName="firstName"
+              matTooltip="Atleast 4 characters"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+            <mat-label>Last name</mat-label>
+            <input
+              matInput
+              type="text"
+              name="lastName"
+              formControlName="lastName"
+              matTooltip="Atleast 4 characters"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          formControlName="email"
+          matTooltip="type in valid email id"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          type="number"
+          name="phoneNumber"
+          formControlName="phoneNumber"
+          matTooltip="valid 10 digit number"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          formControlName="password"
+          matTooltip="Atleast 8 characters"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+        <mat-label>Confirm password</mat-label>
+        <input
+          matInput
+          type="password"
+          name="cpassword"
+          formControlName="cpassword"
+          matTooltip="Atleast 8 characters and should match"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+        <mat-label>Address</mat-label>
+        <textarea
+          name="address"
+          matInput
+          cols="30"
+          rows="2"
+          formControlName="address"
+          matTooltip="Maximum of 50 characters"
+        ></textarea>
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col-12 btn-col">
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="!registerForm.valid"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="row" style="text-align: center; margin-top: 10px">
+      <span class="help-block"
+        >Already have an account?
+        <a mat-button color="accent" style="padding: 0" routerLink="/login"
+          >Login!</a
+        ></span
+      >
+    </div>
+  </mat-card>
+</div>

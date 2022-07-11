@@ -1,0 +1,22 @@
+<div mat-dialog-content style="text-align: center">
+  Are you sure you want to continue?
+</div>
+<div style="margin-top: 20px">
+  <button
+    style="margin: 0px 10px"
+    type="button"
+    mat-raised-button
+    color="accent"
+    [mat-dialog-close]="true"
+  >
+    Confirm
+  </button>
+  <button
+    type="button"
+    [mat-dialog-close]="false"
+    mat-raised-button
+    color="warn"
+  >
+    Cancel
+  </button>
+</div>

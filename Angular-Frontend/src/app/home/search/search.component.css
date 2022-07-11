@@ -1,0 +1,125 @@
+h2,
+h4,
+h6,
+p,
+pre {
+  margin: 0;
+}
+mat-label {
+  color: whitesmoke;
+}
+.mat-card {
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 4px 4px 5px 1px rgba(0, 0, 0, 0.281);
+  margin: 40px 0 40px 0;
+}
+
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.elements > * {
+  margin-right: 10px;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 10%;
+}
+
+.accordion {
+  max-width: 700px;
+}
+
+.accordion-item {
+  margin-bottom: 40px;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.281);
+}
+
+.accordion-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.alpha {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.beta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.beta > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 70px;
+}
+.beta > * > p {
+  font-size: 10px;
+}
+
+.gamma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+tr {
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .accordion-header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  form.container {
+    display: grid;
+  }
+}
+
+.searchButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchButtons > button[type="submit"] {
+  margin-right: 10px;
+}
+
+/* Font color */
+mat-select {
+  color: white;
+}

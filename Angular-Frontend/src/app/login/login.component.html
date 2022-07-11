@@ -1,0 +1,52 @@
+<div class="container parent">
+  <mat-card>
+    <img src="../../assets/ARS.jpg" alt="ARS" />
+
+    <h3 class="mat-display-1">Login</h3>
+
+    <div class="row">
+      <form [formGroup]="loginForm" class="container" (ngSubmit)="onLogin()">
+        <div class="row">
+          <mat-form-field appearance="fill" color="accent" hideRequiredMarker>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" name="email" formControlName="email" />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="fill" hideRequiredMarker color="accent">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              name="password"
+              formControlName="password"
+            />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Login
+          </button>
+        </div>
+        <div class="row text-center">
+          <p>
+            Not an user?
+            <a
+              mat-button
+              color="accent"
+              style="padding: 0"
+              routerLink="/register"
+            >
+              Register
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>

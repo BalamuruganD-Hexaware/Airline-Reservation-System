@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 10%;
+}
+
+.matCard {
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 40px 0;
+  padding: 40px;
+}
+
+.alpha {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.beta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.beta > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-width: 70px;
+}
+.beta > * > p {
+  font-size: 20px;
+}
+.beta > * > h2 {
+  font-size: 30px;
+}
+.beta > * > strong {
+  font-size: 20px;
+}
+
+.mat-icon {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+mat-dialog-container {
+  padding: 0;
+}

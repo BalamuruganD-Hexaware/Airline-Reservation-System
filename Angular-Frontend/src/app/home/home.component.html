@@ -1,0 +1,38 @@
+<p>
+  <mat-toolbar>
+    <a routerLink="/home">
+      <img
+        src="../../assets/Reserve my flight.png"
+        width="300"
+        height="300"
+        alt="logo"
+      />
+    </a>
+    <!-- <span style="margin-left: 0.25rem">Reserve My Flight</span> -->
+    <span class="spacer"></span>
+    <button mat-raised-button *ngIf="!isLoggedIn" routerLink="/login">
+      Login / Register
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      color="link"
+      *ngIf="isLoggedIn"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="cancellation">
+        <mat-icon>airplane_ticket</mat-icon><span>My reservations</span>
+      </button>
+      <button mat-menu-item routerLink="profile">
+        <mat-icon>account_circle</mat-icon><span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon><span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</p>
+
+<router-outlet></router-outlet>

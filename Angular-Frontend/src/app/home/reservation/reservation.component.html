@@ -1,0 +1,90 @@
+<div class="container" mat-dialog-content>
+  <div class="matCard">
+    <div class="alpha">
+      <img src="../../../assets/Air India.png" alt="air india" />
+      <p class="h3">Air India</p>
+      <p class="h4">AI01</p>
+    </div>
+    <div class="beta d-flex">
+      <div class="departure">
+        <mat-icon>flight_takeoff</mat-icon>
+        <h2>{{ flight.departureCity }}</h2>
+        <p>{{ flight.departureDate | date: "mediumDate" }}</p>
+        <strong>{{ flight.departureTime }}</strong>
+      </div>
+      <mat-icon style="font-size: 60px; margin-top: 30px"
+        >arrow_right_alt</mat-icon
+      >
+      <div class="destination">
+        <mat-icon>flight_land</mat-icon>
+        <h2>{{ flight.destinationCity }}</h2>
+        <p>{{ flight.arrivalDate | date: "mediumDate" }}</p>
+        <strong>{{ flight.arrivalTime }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="matCard">
+    <h2>Complete the Reservation</h2>
+    <form
+      class="container flex-column"
+      #summary="ngForm"
+      (ngSubmit)="makeReservation()"
+    >
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Seat Type</mat-label>
+        <mat-select name="seatType" [(ngModel)]="seatType" required>
+          <mat-option value="Business">Business Class</mat-option>
+          <mat-option value="Economy">Economy Class</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Number of Seats</mat-label>
+        <input
+          type="number"
+          matInput
+          name="numOfSeats"
+          [(ngModel)]="numOfSeats"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" floatLabel="always" color="accent">
+        <mat-label>Amount</mat-label>
+        <input
+          matInput
+          name="totalCost"
+          type="number"
+          placeholder="0"
+          [(ngModel)]="totalCost"
+          readonly
+          required
+        />
+        <span matPrefix>₹&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="getTotalCost()"
+        style="margin-bottom: 10px"
+      >
+        Calculate cost
+      </button>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!summary.valid"
+      >
+        Proceed to payment
+      </button>
+    </form>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

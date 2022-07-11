@@ -1,0 +1,147 @@
+<form class="container" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+  <mat-card>
+    <div class="elements">
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>From</mat-label>
+        <mat-select formControlName="departureCity">
+          <mat-option *ngFor="let city of cities" [value]="city">{{
+            city
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>To</mat-label>
+        <mat-select formControlName="destinationCity">
+          <mat-option *ngFor="let city of cities" [value]="city">{{
+            city
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="accent" style="width: 200px">
+        <mat-label>Departure Date</mat-label>
+        <input
+          matInput
+          id="departureDate"
+          formControlName="departureDate"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>Departure time</mat-label>
+        <input
+          matInput
+          id="departureTime"
+          formControlName="departureTime"
+          [readonly]
+        />
+      </mat-form-field>
+    </div>
+    <div class="searchButtons">
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="searchForm.invalid"
+        color="accent"
+      >
+        Search
+      </button>
+
+      <button
+        type="button"
+        color="accent"
+        mat-raised-button
+        (click)="showAllFlights()"
+      >
+        Show All Flights
+      </button>
+    </div>
+  </mat-card>
+</form>
+
+<div class="accordion container" id="flights">
+  <div class="accordion-item container" *ngFor="let flight of flights">
+    <div class="accordion-header" [id]="'heading' + flight.flightNumber">
+      <div class="alpha">
+        <img
+          [src]="'../../../assets/' + flight.airlinesName + '.png'"
+          [alt]="flight.airlinesName"
+        />
+        <p class="h6">{{ flight.airlinesName }}</p>
+        <pre>{{ flight.flightNumber }}</pre>
+      </div>
+      <div class="beta d-flex">
+        <div class="departure">
+          <mat-icon>flight_takeoff</mat-icon>
+          <h2>{{ flight.departureCity }}</h2>
+          <p>{{ flight.departureDate | date: "mediumDate" }}</p>
+          <strong>{{ flight.departureTime }}</strong>
+        </div>
+        <mat-icon style="font-size: 40px">arrow_right_alt</mat-icon>
+        <div class="destination">
+          <mat-icon>flight_land</mat-icon>
+          <h2>{{ flight.destinationCity }}</h2>
+          <p>{{ flight.arrivalDate | date: "mediumDate" }}</p>
+          <strong>{{ flight.arrivalTime }}</strong>
+        </div>
+      </div>
+      <div class="gamma">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="openReservationDialog(flight)"
+        >
+          Reserve
+        </button>
+      </div>
+    </div>
+    <div class="accordion-footer">
+      <button
+        mat-button
+        style="width: 100%"
+        class="collapsed"
+        (click)="switchState()"
+        data-bs-toggle="collapse"
+        [attr.data-bs-target]="'#' + flight.flightNumber"
+        aria-expanded="false"
+        [attr.aria-controls]="flight.flightNumber"
+      >
+        {{ "View " + state }} <mat-icon>{{ "expand_" + state }}</mat-icon>
+      </button>
+    </div>
+    <div
+      [id]="flight.flightNumber"
+      class="accordion-collapse collapse"
+      [aria-labelledby]="'heading' + flight.flightNumber"
+      data-bs-parent="#flights"
+    >
+      <div class="accordion-body">
+        <table class="table table-sm table-borderless text-light">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Business Class</th>
+              <th>Economy Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No of seats</td>
+              <td>{{ flight.businessCount }}</td>
+              <td>{{ flight.economyCount }}</td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td>₹ {{ flight.businessPrice }}</td>
+              <td>₹ {{ flight.economyPrice }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
